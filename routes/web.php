@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,13 @@ Route::prefix('character')->middleware(['auth:sanctum'])->group(function () {
     Route::get('/{id}',  [CharacterController::class, 'get'])->name('character.get');
     
 });
+
+Route::prefix('item')->middleware(['auth:sanctum','role:admin'])->group(function () {
+    Route::get('/list',  [ItemController::class, 'list'])->name('item.list');
+    Route::get('/{id}',  [ItemController::class, 'get'])->name('item.get');
+    
+});
+
 
 
 require __DIR__.'/auth.php';

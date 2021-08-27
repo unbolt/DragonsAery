@@ -1,10 +1,10 @@
 <template>
-    <Head title="Characters" />
+    <Head title="Items" />
 
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Characters
+                Items
             </h2>
         </template>
 
@@ -12,10 +12,10 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <ul id="characters">
-                            <li v-for="character in characters" :key="character.charid">
-                                <img :src="'/img/nation/' + character.nation + '.jpg'" :alt="character.nation" width="15" class="inline" />
-                                {{ character.charname }} - {{ character.zone.name }}
+                        <ul id="items">
+                            <li v-for="item in items" :key="item.int_id">
+                                <img :src="'/img/icon/' + item.int_id + '.png'" :alt="item.en_name" width="15" class="inline" />
+                                {{ item.int_id }} - {{ item.en_name }} - {{ item.en_description }}
                             </li>
                         </ul>
                     </div>
@@ -35,7 +35,7 @@ export default {
         Head,
     },
     props: {
-        characters: Object,
+        items: Object,
     },
 }
 </script>
