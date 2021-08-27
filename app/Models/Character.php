@@ -14,4 +14,9 @@ class Character extends Model
     protected $primaryKey = 'charid';
     
     public $timestamps = false;
+
+    public function zone()
+    {
+        return $this->hasOne(Zone::class, 'zoneid', 'pos_zone');
+    }
 }

@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <ul id="characters">
                             <li v-for="character in characters" :key="character.charid">
-                                {{ character.charname }}
+                                {{ character.charname }} - {{ character.zone.name }}
                             </li>
                         </ul>
                     </div>
