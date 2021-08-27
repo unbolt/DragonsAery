@@ -24,6 +24,9 @@
                                 <BreezeNavLink :href="route('item.list')" :active="route().current('item.list')">
                                     Items
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('mission.list')" :active="route().current('mission.list')" v-if="$page.props.auth.isAdmin">
+                                    Missions
+                                </BreezeNavLink>
                             </div>
                         </div>
 

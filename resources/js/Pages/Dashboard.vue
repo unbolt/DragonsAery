@@ -15,6 +15,7 @@
                         You're logged in! Ahoy
 
                         {{ route('character.list') }}
+
                     </div>
                 </div>
             </div>
