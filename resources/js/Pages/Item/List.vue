@@ -15,7 +15,7 @@
                         <ul id="items">
                             <li v-for="item in items" :key="item.int_id">
                                 <img :src="'/img/icon/' + item.int_id + '.png'" :alt="item.en_name" width="15" class="inline" />
-                                {{ item.int_id }} - {{ item.en_name }} - {{ item.en_description }}
+                                {{ item.int_id }} - {{ item.en_name }} - {{item.jobs }} - {{ item.en_description }}
                             </li>
                         </ul>
                     </div>

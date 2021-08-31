@@ -22316,7 +22316,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "inline"
         }, null, 8
         /* PROPS */
-        , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.int_id) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.en_name) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.en_description), 1
+        , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.int_id) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.en_name) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.jobs) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.en_description), 1
         /* TEXT */
         )]);
       }), 128

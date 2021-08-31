@@ -89,4 +89,49 @@ class Item extends Model
 
         return $items;
     }
+
+    public function getJobsAttribute($value)
+    {
+
+        if($value == '8388606') {
+            return ['All Jobs'];
+        }
+
+        $rtn_jobs = [];
+
+        $jobs = [
+            2 => 'WAR',
+            4 => 'MNK',
+            8 => 'WHM',
+            16 => 'BLM',
+            32 => 'RDM',
+            64 => 'THF',
+            128 => 'PLD',
+            256 => 'DRK',
+            512	=> 'BST',
+            1024 => 'BRD',
+            2048 => 'RNG',
+            4096 => 'SAM',
+            8192 => 'NIN',
+            16384 => 'DRG',
+            32768 => 'SMN',
+            65536 => 'BLU',
+            131072 => 'COR',
+            262144 => 'PUP',
+            524288 => 'DNC',
+            1048576 => 'SCH',
+            2097152 => 'GEO',
+            4194304 => 'RUN'
+        ];
+
+        foreach ($jobs as $mask => $string)
+        {
+            if ($value & $mask)
+            {
+                $rtn_jobs[] = $string;
+            }
+        }
+
+        return $rtn_jobs;
+    }
 }
