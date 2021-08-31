@@ -42,9 +42,9 @@ Route::prefix('character')->middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::prefix('item')->middleware(['auth:sanctum'])->group(function () {
+    Route::get('/search/{query}',  [ItemController::class, 'search'])->name('item.search');
     Route::get('/list',  [ItemController::class, 'list'])->name('item.list');
     Route::get('/{id}',  [ItemController::class, 'get'])->name('item.get');
-    
 });
 
 Route::prefix('mission')->middleware(['auth:sanctum','role:admin'])->group(function () {

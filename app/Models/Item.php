@@ -90,6 +90,11 @@ class Item extends Model
         return $items;
     }
 
+    public function getEnDescriptionAttribute($value)
+    {
+        return nl2br($value);
+    }
+
     public function getJobsAttribute($value)
     {
 
