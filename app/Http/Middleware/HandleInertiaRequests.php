@@ -36,12 +36,14 @@ class HandleInertiaRequests extends Middleware
 
         if($request->user()) {
             $is_admin = $request->user()->hasRole('admin');
+            $active_character = $request->user()->activeCharacter;
         }
 
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
-                'isAdmin' => $is_admin ?? false
+                'isAdmin' => $is_admin ?? false,
+                'activeCharacter' => $active_character ?? false
             ],
         ]);
     }

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +48,20 @@ Route::prefix('item')->middleware(['auth:sanctum'])->group(function () {
     Route::get('/{id}',  [ItemController::class, 'get'])->name('item.get');
 });
 
+Route::prefix('mission')->middleware(['auth:sanctum'])->group(function () {
+    Route::get('/',  [MissionController::class, 'index'])->name('mission.index');
+    Route::get('/category/{id}', [MissionController::class, 'category'])->name('mission.category');
+});
 Route::prefix('mission')->middleware(['auth:sanctum','role:admin'])->group(function () {
-    Route::get('/',  [MissionController::class, 'list'])->name('mission.list');
-    Route::get('/{id}',  [MissionController::class, 'get'])->name('mission.get');
-    Route::get('/create', [MissionController::class, 'create'])->name('mission.create');
+    Route::get('/admin',  [MissionController::class, 'admin'])->name('mission.admin');
 });
 
+Route::prefix('shop')->middleware(['auth:sanctum'])->group(function () {
+    Route::get('/',  [MissionController::class, 'index'])->name('shop.index');
+});
+Route::prefix('shop')->middleware(['auth:sanctum','role:admin'])->group(function () {
+    Route::get('/admin',  [MissionController::class, 'admin'])->name('shop.admin');
+});
 
 
 require __DIR__.'/auth.php';

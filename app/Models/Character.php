@@ -15,6 +15,10 @@ class Character extends Model
     protected $table = 'chars';
     protected $primaryKey = 'charid';
 
+    protected $hidden = ['missions', 'assault', 'campaign', 'eminence', 'quests', 
+                        'keyitems', 'set_blue_spells', 'abilities', 'weaponskills', 
+                        'titles', 'zones'];
+
     public $timestamps = false;
     
 

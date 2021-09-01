@@ -13,43 +13,47 @@ class User extends Authenticatable
 {
     use HasRoles, HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Get the account associated characters via the accid on the character table
-     *
-     * @return relationship 
-     */
+    protected $appends = ['active_mission_count'];
+
     public function characters()
     {
         return $this->hasMany(Character::class, 'accid', 'game_account_id');
     }
+
+    public function activeCharacter()
+    {
+        return $this->hasOne(Character::class, 'charid', 'active_char_id')->with('zone');
+    }
+
+    public function missions()
+    {
+        return $this->hasMany(MissionUndertaken::class);
+    }
+
+    public function activeMissions()
+    {
+        return$this->hasMany(MissionUndertaken::class)->where('end_time', '>', now());
+    }
+
+    public function getActiveMissionCountAttribute() 
+    {
+        return $this->activeMissions()->count();
+    }
+
+    
 }
