@@ -44,4 +44,10 @@ class CharacterStats extends Model
         return $this->jobs[$this->mjob];
     }
 
+    public function getSubJobAttribute()
+    {
+        if(!$this->sjob) { return null; }
+        return $this->jobs[$this->sjob];
+    }
+
 }

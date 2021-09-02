@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <ul id="characters">
                             <li v-for="character in characters" :key="character.charid">
-                                <img :src="'/img/nation/' + character.nation + '.jpg'" :alt="character.nation" width="15" class="inline" />
+                                <Avatar :character='character' />
                                 {{ character.charname }} - {{ character.zone.name }}
                             </li>
                         </ul>
@@ -29,8 +29,11 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
 
+import Avatar from '@/Components/Character/Avatar.vue'
+
 export default {
     components: {
+        Avatar,
         BreezeAuthenticatedLayout,
         Head,
     },

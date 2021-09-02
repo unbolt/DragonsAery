@@ -13,9 +13,11 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
 
-                        <UserMissionSummary :character="$page.props.auth.activeCharacter" />
+                        <MissionSummary :character="$page.props.auth.activeCharacter" />
 
-                        <div class="grid grid-cols-3 gap-4">
+                        <hr />
+
+                        <div class="grid grid-cols-3 gap-4 mt-4">
                             <div v-for="category in mission_categories" v-bind:key='category.id'>
                                 <a :href="route('mission.category', [category.id])" class="block rounded-lg bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-5 text-xl font-semibold subpixel-antialiased text-white">
                                     {{ category.name }} ({{ category.missions.length }})
@@ -32,11 +34,11 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
-import UserMissionSummary from '@/Components/UserMissionSummary.vue'
+import MissionSummary from '@/Components/User/MissionSummary.vue'
 
 export default {
     components: {
-        UserMissionSummary,
+        MissionSummary,
         BreezeAuthenticatedLayout,
         Head,
     },

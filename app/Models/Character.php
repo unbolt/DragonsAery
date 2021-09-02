@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Character\CharacterStats;
+use App\Models\Character\CharacterLook;
+use App\Models\Character\CharacterJobs;
 
 class Character extends Model
 {
@@ -18,6 +20,8 @@ class Character extends Model
     protected $hidden = ['missions', 'assault', 'campaign', 'eminence', 'quests', 
                         'keyitems', 'set_blue_spells', 'abilities', 'weaponskills', 
                         'titles', 'zones'];
+
+    protected $appends = ['nation_color', 'job_and_subjob'];
 
     public $timestamps = false;
     
@@ -32,6 +36,28 @@ class Character extends Model
         return $this->hasOne(CharacterStats::class, 'charid', 'charid');
     }
 
+    public function look()
+    {
+        return $this->hasOne(CharacterLook::class, 'charid', 'charid');
+    }
+
+    public function jobs()
+    {
+        return $this->hasOne(CharacterJobs::class, 'charid', 'charid');
+    }
+
+
+    public function getJobAndSubjobAttribute()
+    {
+        if(!$this->stats->sub_job) { return $this->getJobAttribute(); }
+        return strtoupper($this->getJobAttribute() . '/' . $this->stats->sub_job . min($this->jobs->{$this->stats->sub_job}, 37));
+    }
+
+    public function getJobAttribute() 
+    {
+        return strtoupper($this->stats->job . $this->jobs->{$this->stats->job});
+    }
+
     public function getNationAttribute($value)
     {
         if($value == '1') {
@@ -40,6 +66,17 @@ class Character extends Model
             return 'windurst';
         } elseif($value == '3') {
             return 'sandoria';
+        }
+    }
+
+    public function getNationColorAttribute() 
+    {
+        if($this->nation == 'bastok') {
+            return 'blue';
+        } elseif($this->nation == 'windurst') {
+            return 'green';
+        } elseif($this->nation == 'sandoria') {
+            return 'red';
         }
     }
 }

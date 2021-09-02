@@ -15,7 +15,8 @@ class CharacterController extends Controller
                             ->select('charid','charname','nation','pos_zone')
                             ->with([
                                 'zone:zoneid,name',
-                                'stats'
+                                'stats',
+                                'look'
                             ])
                             ->get();
 

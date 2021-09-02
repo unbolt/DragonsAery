@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\MissionUndertakenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::prefix('item')->middleware(['auth:sanctum'])->group(function () {
 Route::prefix('mission')->middleware(['auth:sanctum'])->group(function () {
     Route::get('/',  [MissionController::class, 'index'])->name('mission.index');
     Route::get('/category/{id}', [MissionController::class, 'category'])->name('mission.category');
+    Route::get('/undertaken', [MissionUndertakenController::class, 'list'])->name('mission.undertaken');
+    Route::get('/active', [MissionUndertakenController::class, 'active'])->name('mission.active');
 });
 Route::prefix('mission')->middleware(['auth:sanctum','role:admin'])->group(function () {
     Route::get('/admin',  [MissionController::class, 'admin'])->name('mission.admin');
