@@ -24,6 +24,8 @@
                         <div v-for="mission in missions" v-bind:key='mission.id'>
                             {{ mission.category.name }} / {{ mission.name }}
 
+                            <button @click='startMission(mission.id)'>Start</button>
+
                             <div v-for="reward in mission.rewards" v-bind:key='reward.id'>
                                 {{ reward.item.en_name }}
                             </div>
@@ -48,6 +50,17 @@ export default {
     props: {
         category: Object,
         missions: Object
+    },
+    methods: {
+        startMission(id) {
+            axios.post('/mission/start/' + id)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+        }
     }
 }
 </script>

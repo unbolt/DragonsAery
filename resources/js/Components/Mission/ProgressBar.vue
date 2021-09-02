@@ -3,7 +3,7 @@
         <div class="flex mb-2 items-center justify-between">
             <div>
             <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200">
-                {{ mission.mission.name }}
+                {{ mission.mission.category.name}} / {{ mission.mission.name }} [{{mission.success_chance }}% success chance]
             </span>
             </div>
             <div class="text-right">

@@ -58,6 +58,34 @@ class Character extends Model
         return strtoupper($this->stats->job . $this->jobs->{$this->stats->job});
     }
 
+    public function getHighestLevelAttribute()
+    {
+        return max(
+            $this->jobs->war,
+            $this->jobs->mnk,
+            $this->jobs->whm,
+            $this->jobs->blm,
+            $this->jobs->rdm,
+            $this->jobs->thf,
+            $this->jobs->pld,
+            $this->jobs->drk,
+            $this->jobs->bst,
+            $this->jobs->brd,
+            $this->jobs->rng,
+            $this->jobs->sam,
+            $this->jobs->nin,
+            $this->jobs->drg,
+            $this->jobs->smn,
+            $this->jobs->blu,
+            $this->jobs->cor,
+            $this->jobs->pup,
+            $this->jobs->dnc,
+            $this->jobs->sch,
+            $this->jobs->geo,
+            $this->jobs->run
+        );
+    }
+
     public function getNationAttribute($value)
     {
         if($value == '1') {

@@ -55,5 +55,15 @@ class User extends Authenticatable
         return $this->activeMissions()->count();
     }
 
+
+    public function canStartMissions() 
+    {
+        if($this->active_mission_count >= 3) {
+            return false;
+        }
+
+        return true;
+    }
+
     
 }
