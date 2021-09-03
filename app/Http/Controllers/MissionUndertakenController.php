@@ -36,6 +36,22 @@ class MissionUndertakenController extends Controller
         return response()->json($missions_undertaken);
     }
 
+    /**
+     * Get the users completed missions
+     *
+     * @return response
+     */
+    public function complete()
+    {
+        $complete = Auth::user()->missions()
+                            ->where('completed', 1)
+                            ->orderBy('created_at', 'DESC')
+                            ->with(['rewards','rewards.item','mission','mission.category'])
+                            ->paginate(5);
+
+        return response()->json($complete);
+    }
+
     public function start(Mission $mission)
     {
         // Check user can start any more missions

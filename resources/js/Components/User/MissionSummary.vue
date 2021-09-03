@@ -1,6 +1,5 @@
 <template>
     <div class="" v-if="character">
-
         <div class="flex flex-row gap-4">
             <div class="flex-grow">
                 <div class="text-2xl pb-1">

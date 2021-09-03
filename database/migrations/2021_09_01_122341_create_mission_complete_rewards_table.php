@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMissionCompeteRewardsTable extends Migration
+class CreateMissionCompleteRewardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMissionCompeteRewardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mission_compete_rewards', function (Blueprint $table) {
+        Schema::create('mission_complete_rewards', function (Blueprint $table) {
             $table->id();
             $table->integer('mission_undertaken_id');
             $table->integer('item_id');
@@ -30,6 +30,6 @@ class CreateMissionCompeteRewardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mission_compete_rewards');
+        Schema::dropIfExists('mission_complete_rewards');
     }
 }

@@ -27,6 +27,7 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
+        "@hennge/vue3-pagination": "^1.0.17",
         "vue-multiselect": "^3.0.0-alpha.2"
     }
 }

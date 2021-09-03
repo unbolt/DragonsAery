@@ -54,6 +54,7 @@ Route::prefix('mission')->middleware(['auth:sanctum'])->group(function () {
     Route::get('/category/{id}', [MissionController::class, 'category'])->name('mission.category');
     Route::get('/undertaken', [MissionUndertakenController::class, 'list'])->name('mission.undertaken');
     Route::get('/active', [MissionUndertakenController::class, 'active'])->name('mission.active');
+    Route::get('/complete', [MissionUndertakenController::class, 'complete'])->name('mission.complete');
     Route::post('/start/{mission}', [MissionUndertakenController::class, 'start'])->name('mission.start');
 });
 Route::prefix('mission')->middleware(['auth:sanctum','role:admin'])->group(function () {
