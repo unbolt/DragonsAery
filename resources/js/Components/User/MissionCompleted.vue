@@ -6,6 +6,10 @@
                     Completed Missions
                 </div>
 
+                <div v-if="missions.length == 0">
+                    <Loading  />
+                </div>
+                
                 <div v-for="mission in missions" v-bind:key='mission.id'>
                     <MissionComplete :mission='mission' />
                 </div>
@@ -28,12 +32,14 @@
 
 <script>
 
+import Loading from '@/Components/Loading.vue'
 import MissionComplete from '@/Components/Mission/Complete.vue'
 import VPagination from "@hennge/vue3-pagination";
 
 export default {
 
     components: {
+        Loading,
         VPagination,
         MissionComplete
     },
@@ -42,7 +48,7 @@ export default {
 
     data () {
         return {
-            missions: Object,
+            missions: [],
             page: 1,
             pages: 1
         }
@@ -55,7 +61,7 @@ export default {
             this.fetchPage(this.page);
         },
         fetchPage(page) {
-            this.missions = Object;
+            this.missions = [];
             axios
                 .get('/mission/complete?page=' + page)
                 .then((response) => {
@@ -69,16 +75,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 .Pagination {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style-type: none; }
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none; 
+}
 
 .PaginationControl {
   display: flex;
@@ -115,12 +123,16 @@ export default {
   border-color: transparent;
   cursor: pointer;
   outline: 0;
-  user-select: none; }
-  .Page:hover {
-    border: 1px solid #DEDEDE; }
-  .Page-active {
-    color: #333333;
-    border: 1px solid #DEDEDE; }
+  user-select: none; 
+}
+.Page:hover {
+    border: 1px solid #DEDEDE;
+}
+.Page-active {
+    color: rgba(219, 39, 119, 1) !important;
+    border: 1px solid rgba(219, 39, 119, 1) !important;
+    background-color: rgba(251, 207, 232, 1) !important;
+}
 
 .DotsHolder {
   display: flex;

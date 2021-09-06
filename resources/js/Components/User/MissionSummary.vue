@@ -6,6 +6,9 @@
                     Active missions: {{ $page.props.auth.user.active_mission_count }}/3
                 </div>
 
+                <div v-if="missions.length == 0">
+                    <Loading  />
+                </div>
                 <div v-for="mission in missions" v-bind:key='mission.id'>
                     <MissionProgressBar :mission='mission' />
                 </div>
@@ -17,11 +20,13 @@
 
 <script>
 
+import Loading from '@/Components/Loading.vue'
 import MissionProgressBar from '@/Components/Mission/ProgressBar.vue'
 
 export default {
 
     components: {
+        Loading,
         MissionProgressBar
     },
 
@@ -29,7 +34,7 @@ export default {
 
     data () {
         return {
-            missions: Object,
+            missions: [],
         }
     },
     mounted() {
